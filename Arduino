@@ -1,0 +1,125 @@
+'''
+#include <LiquidCrystal.h>
+
+String inputString = ""; //incomming string
+boolean stringComplete = false;
+String commandString = "";
+
+int pinLed=13;
+
+boolean isConnected = false;
+
+LiquidCrystal lcd(9,8,7,6,5,4);
+
+void setup() 
+{
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(pinLed,OUTPUT);
+  lcd.begin(16, 2);
+  lcd.print("Device Started");
+}
+
+
+void loop() 
+{
+  if(stringComplete){
+    stringComplete = false;
+    getCommand();
+    if(commandString.equals("STAR"))
+    {
+      lcd.clear();
+      lcd.print("Connected");
+    }
+
+    if(commandString.equals("STOP"))
+    {
+      turnLedOff();
+      lcd.clear();
+      lcd.print("Disconnected");
+    } 
+    else if(commandString.equals("TEXT"))
+    {
+      String text = getTextToPrint();
+      printText(text);
+    } 
+    else if(commandString.equals("LED0"))
+    {
+      boolean LedState = getLedState();
+      if(LedState)
+      {
+        turnLedOn();
+      } else {
+        turnLedOff();
+      }
+    }
+    inputString = "";
+  }
+}
+
+boolean getLedState()
+{
+  boolean state = false;
+  if(inputString.substring(5,7).equals("ON"))
+  {
+    state = true;
+  }
+  return state;
+}
+
+void getCommand()
+{
+  if(inputString.length()>0)
+  {
+    commandString = inputString.substring(1,5);
+  }
+}
+
+void turnLedOn()
+{
+  lcd.clear();
+  lcd.print("LED is ON");
+  digitalWrite(pinLed,HIGH);
+}
+
+void turnLedOff()
+{
+  lcd.clear();
+  lcd.print("LED is OFF");
+  digitalWrite(pinLed,LOW);
+}
+
+String getTextToPrint()
+{
+  int lengthString = inputString.length() - 1;
+  String value = inputString.substring(5, lengthString);
+  return value;
+}
+
+void printText(String text)
+{
+  lcd.clear();
+  lcd.setCursor(0,0);
+  if(text.length()<16)
+  {
+    lcd.print(text);
+  }else
+  {
+    lcd.print(text.substring(0,16));
+    lcd.setCursor(0,1);
+    lcd.print(text.substring(16,32));
+  }
+}
+
+void serialEvent()
+{
+  while(Serial.available())
+  {
+    char inChar =(char)Serial.read();
+    inputString += inChar;
+    if(inChar == '\n'){
+      stringComplete = true;
+    }
+  }
+}
+'''
