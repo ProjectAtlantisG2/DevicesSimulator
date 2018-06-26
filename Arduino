@@ -1,33 +1,74 @@
-'''
 #include <LiquidCrystal.h>
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+#include <DHT_U.h>
+
+#define DHTPIN 12 // Pin which is connected to the DHT sensor.
+#define DHTTYPE DHT22
 
 String inputString = ""; //incomming string
 boolean stringComplete = false;
 String commandString = "";
+
+int count = 0;
 
 int pinLed=13;
 
 boolean isConnected = false;
 
 LiquidCrystal lcd(9,8,7,6,5,4);
+DHT_Unified dht(DHTPIN, DHTTYPE);
+
+uint32_t delayMS;
 
 void setup() 
 {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(pinLed,OUTPUT);
+  
   lcd.begin(16, 2);
+  dht.begin();
+  sensor_t sensor;
+  dht.temperature().getSensor(&sensor);
+  dht.humidity().getSensor(&sensor);
+  delayMS = sensor.min_delay / 1000;
+
   lcd.print("Device Started");
 }
 
 
 void loop() 
 {
+  delay(delayMS);
+
+  processData();
+  
   if(stringComplete){
-    stringComplete = false;
+    updateHardware();
+  }
+  
+}
+
+void processData(){
+  String temp = "T"; 
+  String humi = "H";
+  sensors_event_t event;  
+  dht.temperature().getEvent(&event);
+  temp += event.temperature;
+    Serial.println(temp);
+  
+  dht.humidity().getEvent(&event);
+  humi += event.relative_humidity;
+    Serial.println(humi);
+}
+
+void updateHardware(){
+  stringComplete = false;
     getCommand();
     if(commandString.equals("STAR"))
     {
+      turnLedOn();
       lcd.clear();
       lcd.print("Connected");
     }
@@ -54,7 +95,6 @@ void loop()
       }
     }
     inputString = "";
-  }
 }
 
 boolean getLedState()
@@ -122,4 +162,3 @@ void serialEvent()
     }
   }
 }
-'''
