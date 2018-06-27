@@ -17,6 +17,7 @@ namespace ArduinoConnector
 
             Console.WriteLine("With this panel you can :");
             Console.WriteLine("\t - Type ON or OFF to switch power on the LED");
+            Console.WriteLine("\t - Type READ to start listening the Device");
             Console.WriteLine("\t - Type some text to display on the LCD screen");
             Console.WriteLine("\n");
 
@@ -85,6 +86,7 @@ namespace ArduinoConnector
         private static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             string indata = port.ReadLine();
+            Service.ProcessData(indata);
             //Console.WriteLine(indata);
         }
     }

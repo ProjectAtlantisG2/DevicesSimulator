@@ -7,6 +7,7 @@ namespace GatewayService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service : IService
     {
+
         public string PostCommand(string command)
         {
             Console.WriteLine(command);
@@ -14,10 +15,7 @@ namespace GatewayService
             return "done";
         }
 
-        public void PostData()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void PostIdentity()
         {
