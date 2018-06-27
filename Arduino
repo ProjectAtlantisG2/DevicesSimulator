@@ -19,8 +19,6 @@ boolean isConnected = false;
 LiquidCrystal lcd(9,8,7,6,5,4);
 DHT_Unified dht(DHTPIN, DHTTYPE);
 
-uint32_t delayMS;
-
 void setup() 
 {
   // put your setup code here, to run once:
@@ -32,15 +30,13 @@ void setup()
   sensor_t sensor;
   dht.temperature().getSensor(&sensor);
   dht.humidity().getSensor(&sensor);
-  delayMS = sensor.min_delay / 1000;
 
   lcd.print("Device Started");
 }
 
-
 void loop() 
 {
-  delay(delayMS);
+  delay(500);
 
   processData();
   
