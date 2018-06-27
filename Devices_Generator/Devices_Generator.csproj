@@ -87,7 +87,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arduino.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Receiver.cs" />
     <Compile Include="Program.cs" />
@@ -101,12 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Gateway\Gateway.csproj">
-      <Project>{e4591b58-2fff-4980-a720-6888a17a691a}</Project>
-      <Name>Gateway</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

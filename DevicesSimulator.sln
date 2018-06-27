@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devices_Generator", "Devices_Generator\Devices_Generator.csproj", "{5C08FC91-DB58-4F8C-8E64-DB594B15143C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoConnector", "ArduinoConnector\ArduinoConnector.csproj", "{34DB17FF-05F0-4C64-830F-799800D3B3F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{E4591B58-2FFF-4980-A720-6888A17A691A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "GatewayService\GatewayService.csproj", "{0F62B184-A7D8-4546-A658-DE877C80F6A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayHost", "GatewayHost\GatewayHost.csproj", "{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayClient", "GatewayClient\GatewayClient.csproj", "{9DF7F19E-823B-4B14-BBBD-78345362712A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C08FC91-DB58-4F8C-8E64-DB594B15143C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C08FC91-DB58-4F8C-8E64-DB594B15143C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C08FC91-DB58-4F8C-8E64-DB594B15143C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C08FC91-DB58-4F8C-8E64-DB594B15143C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4591B58-2FFF-4980-A720-6888A17A691A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4591B58-2FFF-4980-A720-6888A17A691A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4591B58-2FFF-4980-A720-6888A17A691A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4591B58-2FFF-4980-A720-6888A17A691A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DB17FF-05F0-4C64-830F-799800D3B3F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DB17FF-05F0-4C64-830F-799800D3B3F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DB17FF-05F0-4C64-830F-799800D3B3F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DB17FF-05F0-4C64-830F-799800D3B3F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F62B184-A7D8-4546-A658-DE877C80F6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F62B184-A7D8-4546-A658-DE877C80F6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F62B184-A7D8-4546-A658-DE877C80F6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F62B184-A7D8-4546-A658-DE877C80F6A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF7F19E-823B-4B14-BBBD-78345362712A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF7F19E-823B-4B14-BBBD-78345362712A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF7F19E-823B-4B14-BBBD-78345362712A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF7F19E-823B-4B14-BBBD-78345362712A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
