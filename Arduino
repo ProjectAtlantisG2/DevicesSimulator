@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#include <avdweb_VirtualDelay.h>
 #include <LiquidCrystal.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
@@ -9,6 +11,7 @@
 String inputString = ""; //incomming string
 boolean stringComplete = false;
 String commandString = "";
+VirtualDelay singleDelay;
 
 int count = 0;
 
@@ -36,14 +39,12 @@ void setup()
 
 void loop() 
 {
-  delay(500);
-
-  processData();
-  
   if(stringComplete){
     updateHardware();
   }
-  
+
+  singleDelay.start(2000);
+  if(singleDelay.elapsed()) processData();  
 }
 
 void processData(){
@@ -65,17 +66,9 @@ void updateHardware(){
     if(commandString.equals("STAR"))
     {
       turnLedOn();
-      lcd.clear();
-      lcd.print("Connected");
-    }
-
-    if(commandString.equals("STOP"))
-    {
-      turnLedOff();
-      lcd.clear();
-      lcd.print("Disconnected");
-    } 
-    else if(commandString.equals("TEXT"))
+      //lcd.clear();
+      //lcd.print("Connected");
+    }else if(commandString.equals("TEXT"))
     {
       String text = getTextToPrint();
       printText(text);
@@ -113,15 +106,15 @@ void getCommand()
 
 void turnLedOn()
 {
-  lcd.clear();
-  lcd.print("LED is ON");
+  //lcd.clear();
+  //lcd.print("LED is ON");
   digitalWrite(pinLed,HIGH);
 }
 
 void turnLedOff()
 {
-  lcd.clear();
-  lcd.print("LED is OFF");
+  //lcd.clear();
+  //lcd.print("LED is OFF");
   digitalWrite(pinLed,LOW);
 }
 
