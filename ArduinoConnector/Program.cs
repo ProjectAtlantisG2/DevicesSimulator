@@ -27,7 +27,11 @@ namespace ArduinoConnector
                 Console.Write("Command : ");
                 var text = Console.ReadLine();
                 Console.WriteLine("Connection to Device....");
-                ConnectToArduino();
+                if (!ConnectToArduino())
+                {
+                    Console.WriteLine("Error : Device cannot connect.....");
+                    continue;
+                }
                 Console.WriteLine("Device is connected.....");
                 if (text == "OFF" || text == "ON")
                 {
@@ -51,36 +55,47 @@ namespace ArduinoConnector
 
         }
 
-        public static void SendCommandToDevice(string text)
+        public static bool SendCommandToDevice(string text)
         {
             Console.WriteLine("Connection to Device....");
-            ConnectToArduino();
+            if (!ConnectToArduino()) return false;
             Console.WriteLine("Device is connected.....");
             port.Write(text);
             Thread.Sleep(800);
             Console.WriteLine("Disconnection of the Device....");
             port.Close();
             Console.WriteLine("Device is disconnected.....\n");
+            return true;
         }
 
-        private static void GetAvailableComPorts()
+        private static bool GetAvailableComPorts()
         {
             ports = SerialPort.GetPortNames();
             Console.WriteLine("Serial Port : ");
             foreach (var p in ports)
                 Console.WriteLine("\t" + p);
+            if (ports.Length == 0) return false;
             port = new SerialPort(ports[0], 9600, Parity.None, 8, StopBits.One);
+            return true;
         }
 
-        public static void ConnectToArduino()
+        public static bool ConnectToArduino()
         {
             Console.WriteLine("Searching For Available Serial Port.....");
-            GetAvailableComPorts();
+            if (!GetAvailableComPorts())    return false;
             Console.WriteLine("");
             port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-            port.Open();
+            try
+            {
+                port.Open();
+            }
+            catch
+            {
+                return false;
+            }
             Console.WriteLine("Port {0} is Open", ports[0]);
             port.Write("#STAR\n");
+            return true;
         }
 
         private static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)

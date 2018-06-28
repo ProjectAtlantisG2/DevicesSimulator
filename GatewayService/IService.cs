@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Net.Http;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 
 namespace GatewayService
@@ -8,7 +9,7 @@ namespace GatewayService
     {
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest)]
-        string PostCommand(string command);
+        HttpResponseMessage PostCommand(string command);
         
         void PostIdentity();
     }

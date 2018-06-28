@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace ArduinoConnector
 {
-    class Utils
+    public class Utils
     {
         private static Random r = new Random();
 

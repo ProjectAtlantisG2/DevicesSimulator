@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "GatewaySe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayHost", "GatewayHost\GatewayHost.csproj", "{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoConnector.Tests", "ArduinoConnector.Tests\ArduinoConnector.Tests.csproj", "{11D620A3-8C36-4C52-8F8B-6B849C600038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService.Tests", "GatewayService.Tests\GatewayService.Tests.csproj", "{AAA77D65-7B05-4E16-9B1F-0D8F07B00A6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A851F9DF-6CC8-4CC4-ACF4-B1518EC46170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D620A3-8C36-4C52-8F8B-6B849C600038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D620A3-8C36-4C52-8F8B-6B849C600038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D620A3-8C36-4C52-8F8B-6B849C600038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D620A3-8C36-4C52-8F8B-6B849C600038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA77D65-7B05-4E16-9B1F-0D8F07B00A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA77D65-7B05-4E16-9B1F-0D8F07B00A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA77D65-7B05-4E16-9B1F-0D8F07B00A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA77D65-7B05-4E16-9B1F-0D8F07B00A6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using System;
-using ArduinoConnector;
+using System.Net.Http;
+using System.Net;
 
 namespace GatewayService
 {
@@ -8,11 +9,12 @@ namespace GatewayService
     public class Service : IService
     {
 
-        public string PostCommand(string command)
+        public HttpResponseMessage PostCommand(string command)
         {
+            if (command == null || command == "") return new HttpResponseMessage(HttpStatusCode.MethodNotAllowed);
             Console.WriteLine(command);
-            Program.SendCommandToDevice(command);
-            return "done";
+            if (!ArduinoConnector.Program.SendCommandToDevice(command)) return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         

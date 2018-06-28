@@ -16,14 +16,15 @@ namespace ArduinoConnector
 
         private static void PostData(string telemetry, string id)
         {
-
-            client.PostAsync(deviceEndpointUri + id + "PostData", new StringContent(telemetry, Encoding.UTF8, "application/json"));
+            if(telemetry != null && id != null)
+                client.PostAsync(deviceEndpointUri + id + "PostData", new StringContent(telemetry, Encoding.UTF8, "application/json"));
         }
 
         public static void ProcessData(string data)
         {
             try
             {
+                if (data == null) return;
                 Telemetry tel = null;
                 var text = data.Remove(data.Length - 2, 2);
                 var id = "";
