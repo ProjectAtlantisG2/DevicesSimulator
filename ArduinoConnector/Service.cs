@@ -17,7 +17,7 @@ namespace ArduinoConnector
         private static void PostData(string telemetry, string id)
         {
             if(telemetry != null && id != null)
-                client.PostAsync(deviceEndpointUri + id + "PostData", new StringContent(telemetry, Encoding.UTF8, "application/json"));
+                client.PostAsync(deviceEndpointUri + id + "/telemetry", new StringContent(telemetry, Encoding.UTF8, "application/json"));
         }
 
         public static void ProcessData(string data)
@@ -30,7 +30,7 @@ namespace ArduinoConnector
                 var id = "";
                 if (data.Remove(1, data.Length - 1) == "T")
                 {
-                    tel = new Telemetry(DateTime.Now, DeviceType.atmosphericPressureSensor, text.Remove(0, 1));
+                    tel = new Telemetry(DateTime.Now, DeviceType.temperatureSensor, text.Remove(0, 1));
                     id = "00:00:00:00:00";
                 }
                 else

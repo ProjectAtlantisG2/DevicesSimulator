@@ -9,7 +9,7 @@ namespace GatewayService
     public class Service : IService
     {
 
-        public HttpResponseMessage PostCommand(string command)
+        public HttpResponseMessage PostCommand(string command, string deviceId)
         {
             if (command == null || command == "") return new HttpResponseMessage(HttpStatusCode.MethodNotAllowed);
             Console.WriteLine(command);
