@@ -13,13 +13,21 @@ namespace ArduinoConnector
     {
         private static readonly HttpClient client = new HttpClient();
         private static readonly string deviceEndpointUri = ConfigurationManager.AppSettings["DeviceEndpointUri"];
-
-        private static void PostData(string telemetry, string id)
+        /// <summary>
+        /// Send data to the Device API of the Microsoft Platform
+        /// </summary>
+        /// <param name="telemetry">Metric that has to be sent</param>
+        /// <param name="id">Id of the Sending Device</param>
+        private static void PostData(string telemetry, string deviceId)
         {
-            if(telemetry != null && id != null)
-                client.PostAsync(deviceEndpointUri + id + "/telemetry", new StringContent(telemetry, Encoding.UTF8, "application/json"));
+            if(telemetry != null && deviceId != null)
+                client.PostAsync(deviceEndpointUri + deviceId + "/telemetry", new StringContent(telemetry, Encoding.UTF8, "application/json"));
         }
 
+        /// <summary>
+        /// Process the data receive from the Arduino to make it clean to send to the Microsoft Platform
+        /// </summary>
+        /// <param name="data">Data that have been receive from the Arduino</param>
         public static void ProcessData(string data)
         {
             try
