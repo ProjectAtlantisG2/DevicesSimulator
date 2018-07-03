@@ -8,8 +8,8 @@ namespace GatewayService
     public interface IService
     {
         [OperationContract]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest)]
-        HttpResponseMessage PostCommand(string command);
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest, UriTemplate = "{deviceId}/command")]
+        HttpResponseMessage PostCommand(string command, string deviceId);
         
         void PostIdentity();
     }

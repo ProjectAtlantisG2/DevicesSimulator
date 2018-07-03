@@ -8,6 +8,10 @@ namespace ArduinoConnector
     {
         private static Random r = new Random();
 
+        /// <summary>
+        /// Generate a random MAC Address
+        /// </summary>
+        /// <returns>A Mac Address</returns>
         public string GenerateMACAddress()
         {
             var sBuilder = new StringBuilder();

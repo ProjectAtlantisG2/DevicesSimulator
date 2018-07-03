@@ -8,11 +8,16 @@ namespace GatewayService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service : IService
     {
-
-        public HttpResponseMessage PostCommand(string command)
+        /// <summary>
+        /// Receive command from the Microsoft Platform
+        /// </summary>
+        /// <param name="command">Text command to execute</param>
+        /// <param name="deviceId">Destination of the command</param>
+        /// <returns></returns>
+        public HttpResponseMessage PostCommand(string command, string deviceId)
         {
             if (command == null || command == "") return new HttpResponseMessage(HttpStatusCode.MethodNotAllowed);
-            Console.WriteLine(command);
+            //Console.WriteLine("Executed Command"command);
             if (!ArduinoConnector.Program.SendCommandToDevice(command)) return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }

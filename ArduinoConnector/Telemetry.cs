@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,16 +12,16 @@ namespace ArduinoConnector
     public class Telemetry
     {
         [DataMember]
-        private DateTime metricDate { get; set; }
+        private string metricDate { get; set; }
         [DataMember]
-        private DeviceType deviceType { get; set; }
+        private string deviceType { get; set; }
         [DataMember]
         private string metricValue { get; set; }
         
-        public Telemetry(DateTime? metricDate = null, DeviceType? deviceType = null, string metricValue = null)
+        public Telemetry(string metricDate = null, DeviceType? deviceType = null, string metricValue = null)
         {
-            if(metricDate!=null) this.metricDate = (DateTime)metricDate;
-            if (deviceType != null) this.deviceType = (DeviceType)deviceType;
+            if (metricDate != null) this.metricDate = metricDate;
+            if (deviceType != null) this.deviceType = deviceType.ToString();
             this.metricValue = metricValue;
         }
     }

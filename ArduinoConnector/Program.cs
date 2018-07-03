@@ -20,6 +20,7 @@ namespace ArduinoConnector
             Console.WriteLine("\t - Type READ to start listening the Device");
             Console.WriteLine("\t - Type some text to display on the LCD screen");
             Console.WriteLine("\n");
+            //Service.ProcessData("T25");
 
             while (true)
             {
@@ -55,6 +56,11 @@ namespace ArduinoConnector
 
         }
 
+        /// <summary>
+        /// Send a text command to the Arduino. See Github for more info on the command.
+        /// </summary>
+        /// <param name="text">Text to send</param>
+        /// <returns>Error Handling</returns>
         public static bool SendCommandToDevice(string text)
         {
             Console.WriteLine("Connection to Device....");
@@ -68,6 +74,10 @@ namespace ArduinoConnector
             return true;
         }
 
+        /// <summary>
+        /// Get the name of each plug in Serial Port 
+        /// </summary>
+        /// <returns>Error Handling</returns>
         private static bool GetAvailableComPorts()
         {
             ports = SerialPort.GetPortNames();
@@ -79,6 +89,10 @@ namespace ArduinoConnector
             return true;
         }
 
+        /// <summary>
+        /// Open a connection between the Gateway and the Arduino
+        /// </summary>
+        /// <returns>Error Handling</returns>
         public static bool ConnectToArduino()
         {
             Console.WriteLine("Searching For Available Serial Port.....");
@@ -98,6 +112,11 @@ namespace ArduinoConnector
             return true;
         }
 
+        /// <summary>
+        /// Event that trigger every time the SerialPort receive a data drom the Arduino
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             string indata = port.ReadLine();
