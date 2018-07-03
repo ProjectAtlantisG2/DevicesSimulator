@@ -20,6 +20,7 @@ namespace ArduinoConnector
             Console.WriteLine("\t - Type READ to start listening the Device");
             Console.WriteLine("\t - Type some text to display on the LCD screen");
             Console.WriteLine("\n");
+            //Service.ProcessData("T25");
 
             while (true)
             {

@@ -17,7 +17,7 @@ namespace GatewayService
         public HttpResponseMessage PostCommand(string command, string deviceId)
         {
             if (command == null || command == "") return new HttpResponseMessage(HttpStatusCode.MethodNotAllowed);
-            Console.WriteLine(command);
+            //Console.WriteLine("Executed Command"command);
             if (!ArduinoConnector.Program.SendCommandToDevice(command)) return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }

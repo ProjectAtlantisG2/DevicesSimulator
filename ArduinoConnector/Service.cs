@@ -38,12 +38,12 @@ namespace ArduinoConnector
                 var id = "";
                 if (data.Remove(1, data.Length - 1) == "T")
                 {
-                    tel = new Telemetry(DateTime.Now, DeviceType.temperatureSensor, text.Remove(0, 1));
+                    tel = new Telemetry(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss:fff"), DeviceType.temperatureSensor, text.Remove(0, 1));
                     id = "00:00:00:00:00";
                 }
                 else
                 {
-                    tel = new Telemetry(DateTime.Now, DeviceType.humiditySensor, text.Remove(0, 1));
+                    tel = new Telemetry(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss:fff"), DeviceType.humiditySensor, text.Remove(0, 1));
                     id = "11:11:11:11:11";
                 }
 
