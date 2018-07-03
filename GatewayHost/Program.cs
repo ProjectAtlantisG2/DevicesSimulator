@@ -24,7 +24,7 @@ namespace GatewayHost
             {
                 Console.WriteLine("\t- Binding : {0}  |  Address : {1}", endpoint.Binding, endpoint.Address);
             }
-             
+              
             host.Open();
             Console.WriteLine("\nPress enter to quit.....");
             Console.ReadLine();
