@@ -63,14 +63,14 @@ namespace ArduinoConnector
         /// <returns>Error Handling</returns>
         public static bool SendCommandToDevice(string text)
         {
-            Console.WriteLine("Connection to Device....");
+            //Console.WriteLine("Connection to Device....");
             if (!ConnectToArduino()) return false;
-            Console.WriteLine("Device is connected.....");
+            //Console.WriteLine("Device is connected.....");
             port.Write(text);
-            Thread.Sleep(800);
-            Console.WriteLine("Disconnection of the Device....");
+            Thread.Sleep(1000);
+            //Console.WriteLine("Disconnection of the Device....");
             port.Close();
-            Console.WriteLine("Device is disconnected.....\n");
+            //Console.WriteLine("Device is disconnected.....\n");
             return true;
         }
 
@@ -81,9 +81,9 @@ namespace ArduinoConnector
         private static bool GetAvailableComPorts()
         {
             ports = SerialPort.GetPortNames();
-            Console.WriteLine("Serial Port : ");
-            foreach (var p in ports)
-                Console.WriteLine("\t" + p);
+            //Console.WriteLine("Serial Port : ");
+            //foreach (var p in ports)
+            //Console.WriteLine("\t" + p);
             if (ports.Length == 0) return false;
             port = new SerialPort(ports[0], 9600, Parity.None, 8, StopBits.One);
             return true;
@@ -95,9 +95,9 @@ namespace ArduinoConnector
         /// <returns>Error Handling</returns>
         public static bool ConnectToArduino()
         {
-            Console.WriteLine("Searching For Available Serial Port.....");
+            //Console.WriteLine("Searching For Available Serial Port.....");
             if (!GetAvailableComPorts())    return false;
-            Console.WriteLine("");
+            //Console.WriteLine("");
             port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             try
             {
@@ -107,7 +107,7 @@ namespace ArduinoConnector
             {
                 return false;
             }
-            Console.WriteLine("Port {0} is Open", ports[0]);
+            //Console.WriteLine("Port {0} is Open", ports[0]);
             port.Write("#STAR\n");
             return true;
         }

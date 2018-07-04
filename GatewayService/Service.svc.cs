@@ -16,9 +16,11 @@ namespace GatewayService
         /// <returns></returns>
         public HttpResponseMessage PostCommand(string command, string deviceId)
         {
+            var text = "#LED0OFF\n";
+            if (command == "cmd=1") text = "#LED0ON\n";
             if (command == null || command == "") return new HttpResponseMessage(HttpStatusCode.MethodNotAllowed);
-            //Console.WriteLine("Executed Command"command);
-            if (!ArduinoConnector.Program.SendCommandToDevice(command)) return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            Console.WriteLine("New Command is coming throught Gateway");
+            if (!ArduinoConnector.Program.SendCommandToDevice(text)) return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
